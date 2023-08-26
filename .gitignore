@@ -25,8 +25,19 @@
 *.la
 *.a
 *.lib
+*.pdb
+*.exp
 
 # Executables
 *.exe
 *.out
 *.app
+
+#files
+.vs
+bin-int
+x64
+*.vcxproj.filters
+*.vcxproj.user
+*.vcxitems
+*.aps
