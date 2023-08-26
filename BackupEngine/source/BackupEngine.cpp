@@ -90,8 +90,6 @@ int main()
 	Button button(100.f, 50.f, 50.f, 50.f,
 								btnColor, "Exit", "Font.TTF", Utility::Core::Random::Int(10, 30));
 	std::cout << pythagorasTheoremFindValueOfHypo(2, 4) << std::endl;
-	
-
 
 	while (window.isOpen())
 	{

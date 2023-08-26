@@ -128,7 +128,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Depend\include;$(SolutionDir)Depend/lib/SFML;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Depend\include;$(SolutionDir)Depend/lib/SFML;$(ProjectName)\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -149,7 +149,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Depend\include;$(SolutionDir)Depend/lib/SFML;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Depend\include;$(SolutionDir)Depend/lib/SFML;$(ProjectName)\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

@@ -150,29 +150,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="BackupEngine.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="State.h" />
-    <ClInclude Include="TitleBar.h" />
+    <ClInclude Include="source\Application.h" />
+    <ClInclude Include="source\BackupEngine.h" />
+    <ClInclude Include="source\Entity.h" />
+    <ClInclude Include="source\resource.h" />
+    <ClInclude Include="source\State.h" />
+    <ClInclude Include="source\TitleBar.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="BackupEngine.cpp" />
-    <ClCompile Include="TitleBar.cpp" />
+    <ClCompile Include="source\Application.cpp" />
+    <ClCompile Include="source\BackupEngine.cpp" />
+    <ClCompile Include="source\TitleBar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\Users\moham\OneDrive\Desktop\Logos\BackupCookieStudioLogo.png" />
     <Image Include="..\..\..\Users\moham\OneDrive\Desktop\WebIcon.ico" />
     <Image Include="Close.png" />
-    <Image Include="ReSize.png" />
+    <Image Include="source\ReSize.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Font.TTF" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="BackupEngine.rc" />
+    <ResourceCompile Include="source\BackupEngine.rc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoreStuff\CoreStuff.vcxproj">
