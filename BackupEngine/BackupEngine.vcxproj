@@ -164,7 +164,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\Users\moham\OneDrive\Desktop\Logos\BackupCookieStudioLogo.png" />
-    <Image Include="..\..\..\Users\moham\OneDrive\Desktop\WebIcon.ico" />
     <Image Include="Close.png" />
     <Image Include="source\ReSize.png" />
   </ItemGroup>

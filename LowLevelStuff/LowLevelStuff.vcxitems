@@ -17,8 +17,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\BackupEngine%282D%29\LowLevelStuff\AppCore.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CustomMemory.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)gui.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UserAccount.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)gui.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Source.cpp" />
   </ItemGroup>
 </Project>

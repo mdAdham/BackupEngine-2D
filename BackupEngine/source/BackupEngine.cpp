@@ -5,7 +5,8 @@
 #include "BackupEngine.h"
 #include "Application.h"
 #include <SFML/Window.hpp>
-#include <SFML/System.hpp> 
+#include <SFML/System.hpp>
+#include "UserAccount.h"
 
 MemoryManagement memory;
 
@@ -39,13 +40,18 @@ int main()
 	Application app("BackupEngine", "BackupEngine_Data", sf::Vector2u(800, 600));
 	app.Run();
 
+	std::cout << SendMessageB() << std::endl;
+
 	sf::ContextSettings setting;
 	setting.majorVersion = 3;
 	setting.minorVersion = 3;
 	setting.antialiasingLevel = 1;
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "BackupEngine", sf::Style::Resize, setting);
-	window.setFramerateLimit(60);
+	sf::RenderWindow window(sf::VideoMode(850, 650, 32u), "BackupEngine", sf::Style::Resize, setting);
+	window.setFramerateLimit(120);
+	sf::View view;
+	view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
+	bool fullscreen = false;
 	sf::Event sfEvent{};
 	sf::Texture CloseTexture, ReSizeTexture;
 	sf::Clock clock;
@@ -103,7 +109,18 @@ int main()
 			{
 				textBox1.TypedOn(sfEvent);
 			}
+			if (sfEvent.type == sf::Event::Resized)
+			{
+				std::cout << sfEvent.size.width << " " << sfEvent.size.height << std::endl;
+				std::cout << window.getSize().x << " " << window.getSize().y << std::endl;
+				view.setSize(sf::Vector2f(sfEvent.size.width, sfEvent.size.height));
+				view.setCenter(sf::Vector2f(sfEvent.size.width, sfEvent.size.height) / 2.f);
+				window.setView(view);
+			}
 		}
+
+		
+
 		window.clear();
 		sf::Vector2i mouseposwindow = sf::Mouse::getPosition(window);
 		button.Update(mouseposwindow);
@@ -115,7 +132,7 @@ int main()
 
 		if (textBox1.getText() == "/exit" && !textBox1.IsSelected())
 			window.close();
-
+		
 		window.draw(sp);
 		for (auto item : button.getDrawables())
 		{

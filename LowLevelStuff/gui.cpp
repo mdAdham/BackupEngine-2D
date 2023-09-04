@@ -85,6 +85,8 @@ void Button::Render(sf::RenderWindow& window)
 //TextBox
 TextBox::TextBox(int Textsize, sf::Color color, bool seleted)
 {
+
+
 	textBox.setCharacterSize(Textsize);
 	textBox.setFillColor(color);
 	isSelected = seleted;

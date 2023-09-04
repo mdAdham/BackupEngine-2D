@@ -60,6 +60,7 @@ public:
 	void TypedOn(sf::Event input);
 
 private:
+	sf::RectangleShape box;
 	sf::Text textBox;
 	std::ostringstream text;
 	bool isSelected = false;
