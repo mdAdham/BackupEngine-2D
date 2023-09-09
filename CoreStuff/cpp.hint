@@ -1,0 +1,2 @@
+#define CORESTUFF_API __declspec(dllexport)
+#define CORESTUFF_API __declspec(dllimport)
