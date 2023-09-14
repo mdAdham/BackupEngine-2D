@@ -41,3 +41,4 @@ x64
 *.vcxproj.user
 *.vcxitems
 *.aps
+/LowLevelStuff/Source.cpp

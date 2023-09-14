@@ -21,6 +21,5 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)gui.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Source.cpp" />
   </ItemGroup>
 </Project>

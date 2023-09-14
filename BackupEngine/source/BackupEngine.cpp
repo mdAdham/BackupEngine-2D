@@ -55,13 +55,19 @@ int main()
 	sf::Event sfEvent{};
 	sf::Texture CloseTexture, ReSizeTexture;
 	sf::Clock clock;
-	ButtonColor btnColor;
+	ButtonColor btnColor, sndButtonColor;
 
-	TextBox textBox1(50, sf::Color::Blue, true);
+	sndButtonColor.idle = sf::Color(0, 0, 0, 50);
+	sndButtonColor.hover = sf::Color(20, 20, 20, 100);
+	sndButtonColor.active = sf::Color(50, 50, 50, 150);
+	sndButtonColor.outlineColor = sf::Color(0, 0, 0, 20);
+
+	TextBox textBox1(0.f, window.getSize().y - 32, window.getSize().x, 30 , 25, sf::Color(255, 255, 255, 255), sf::Color(50, 50, 50, 200), 3.f, sf::Color(150, 150, 150, 50), true);
+	Button sendButton(70, 30, 0, 0, sndButtonColor, "SEND ", "Font.ttf", 18);
+	SetTextBox_ButtonPos(textBox1, sendButton, TBButtonPosion::TB_RIGHT);
 	sf::Font comic;
 	comic.loadFromFile("Font.TTF");
 	textBox1.SetFont(comic);
-	textBox1.SetPosition(sf::Vector2f(5, 100));
 	textBox1.SetLimit(true, 120);
 
 	///////////////////////////////////////////////////////
@@ -109,10 +115,12 @@ int main()
 			{
 				textBox1.TypedOn(sfEvent);
 			}
+			if (sfEvent.type == sf::Event::MouseButtonPressed)
+			{
+				textBox1.BoxClicked(sfEvent, window);
+			}
 			if (sfEvent.type == sf::Event::Resized)
 			{
-				std::cout << sfEvent.size.width << " " << sfEvent.size.height << std::endl;
-				std::cout << window.getSize().x << " " << window.getSize().y << std::endl;
 				view.setSize(sf::Vector2f(sfEvent.size.width, sfEvent.size.height));
 				view.setCenter(sf::Vector2f(sfEvent.size.width, sfEvent.size.height) / 2.f);
 				window.setView(view);
@@ -124,10 +132,11 @@ int main()
 		window.clear();
 		sf::Vector2i mouseposwindow = sf::Mouse::getPosition(window);
 		button.Update(mouseposwindow);
+		sendButton.Update(mouseposwindow);
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Home))
 			textBox1.SetSelected(true);
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) || sendButton.isPressed())
 			textBox1.SetSelected(false);
 
 		if (textBox1.getText() == "/exit" && !textBox1.IsSelected())
@@ -138,13 +147,13 @@ int main()
 		{
 			window.draw(*item);
 		}
+		sendButton.Render(window);
 		
 		if (button.isPressed())
 			window.close();
 
 		textBox1.drawText(window);
-		sf::ContextSettings set;
-		//button.Render(window);
+
 		window.display();
 	}
 	return 0;

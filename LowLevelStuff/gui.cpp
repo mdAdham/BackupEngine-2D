@@ -1,5 +1,13 @@
 #include "gui.h"
 
+void Button::CalculateTextPos()
+{
+	this->m_text.setPosition(
+		this->m_shape.getPosition().x + (this->m_shape.getGlobalBounds().width / 2.f) - this->m_text.getGlobalBounds().width / 2.f,
+		this->m_shape.getPosition().y + ((this->m_shape.getGlobalBounds().height / 2) - this->m_text.getGlobalBounds().height)
+	);
+}
+
 Button::Button(
 	float sizeX, float sizeY, float posX, float posY,
 	ButtonColor colors,
@@ -11,6 +19,8 @@ Button::Button(
 	this->m_shape.setSize(sf::Vector2f(sizeX, sizeY));
 	this->m_shape.setPosition(posX, posY);
 	this->m_shape.setFillColor(this->m_color.idle);
+	this->m_shape.setOutlineColor(colors.outlineColor);
+	this->m_shape.setOutlineThickness(3.f);
 
 	//Text
 	this->m_font.loadFromFile(fontpath);
@@ -18,10 +28,7 @@ Button::Button(
 	this->m_text.setString(text);
 	this->m_text.setCharacterSize(fontsize);
 
-	this->m_text.setPosition(
-		this->m_shape.getPosition().x + (this->m_shape.getGlobalBounds().width / 2.f) - this->m_text.getGlobalBounds().width / 2.f,
-		this->m_shape.getPosition().y + ((this->m_shape.getGlobalBounds().height / 2) - this->m_text.getGlobalBounds().height)
-	);
+	CalculateTextPos();
 
 	this->drawables.push_back(&this->m_shape);
 	this->drawables.push_back(&this->m_text);
@@ -30,6 +37,12 @@ Button::Button(
 Button::~Button()
 {
 
+}
+
+void Button::setPosition(float posX, float posY)
+{
+	this->m_shape.setPosition(posX, posY);
+	CalculateTextPos();
 }
 
 bool Button::isPressed()
@@ -83,17 +96,22 @@ void Button::Render(sf::RenderWindow& window)
 }
 
 //TextBox
-TextBox::TextBox(int Textsize, sf::Color color, bool seleted)
+TextBox::TextBox(float posX, float posY, float boxSizeX, float boxSizeY, uint32_t fontsize, sf::Color textcolor, sf::Color boxcolor, float outlineThicknes, sf::Color outlineColor, bool selected)
 {
+	this->SetTextAndBoxPosition(posX, posY);
+	this->textBox.setFillColor(textcolor);
+	this->textBox.setCharacterSize(fontsize);
 
-
-	textBox.setCharacterSize(Textsize);
-	textBox.setFillColor(color);
-	isSelected = seleted;
-	if (seleted)
+	isSelected = selected;
+	if (selected)
 		textBox.setString("_");
 	else
 		textBox.setString("");
+
+	box.setSize({ boxSizeX, boxSizeY });
+	box.setFillColor(boxcolor);
+	box.setOutlineThickness(outlineThicknes);
+	box.setOutlineColor(outlineColor);
 }
 
 void TextBox::SetFont(sf::Font& font)
@@ -103,7 +121,7 @@ void TextBox::SetFont(sf::Font& font)
 
 void TextBox::SetPosition(sf::Vector2f pos)
 {
-	textBox.setPosition(pos);
+	this->SetTextAndBoxPosition(pos.x, pos.y);
 }
 
 void TextBox::SetLimit(bool ToF)
@@ -142,6 +160,7 @@ bool TextBox::IsSelected()
 
 void TextBox::drawText(sf::RenderTarget& target)
 {
+	target.draw(box);
 	target.draw(textBox);
 }
 
@@ -167,6 +186,19 @@ void TextBox::TypedOn(sf::Event input)
 			}
 		}
 	}
+}
+
+void TextBox::BoxClicked(sf::Event input, sf::RenderWindow& window)
+{
+	if (this->box.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
+	{
+		this->SetSelected(true);
+	}
+}
+
+const sf::FloatRect TextBox::getGB() const
+{
+	return this->box.getGlobalBounds();
 }
 
 void TextBox::InputLogic(int charTyped)
@@ -199,4 +231,33 @@ void TextBox::DeleteLastChar()
 	text << newT;
 
 	textBox.setString(text.str());
+}
+
+void TextBox::SetTextAndBoxPosition(float boxPosiitonX, float boxpositionY)
+{
+	this->box.setPosition(boxPosiitonX, boxpositionY);
+	this->textBox.setPosition(boxPosiitonX, boxpositionY);
+}
+
+void SetTextBox_ButtonPos(TextBox& textbox, Button& button, TBButtonPosion positon)
+{
+	switch (positon)
+	{
+	case TB_LEFT:
+	{
+
+		break;
+	}
+	case TB_RIGHT:
+	{
+		button.setPosition(
+			(textbox.getGB().left + textbox.getGB().width) + 2.f,
+			textbox.getGB().top + 2
+		);
+
+		break;
+	}
+	default:
+		break;
+	}
 }

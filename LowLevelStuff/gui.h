@@ -7,6 +7,7 @@ struct ButtonColor
 	sf::Color idle;
 	sf::Color hover;
 	sf::Color active;
+	sf::Color outlineColor = sf::Color::Transparent;
 };
 
 enum button_status { BTN_IDLE, BTN_HOVER, BTN_ACTIVE };
@@ -25,10 +26,15 @@ protected:
 	bool m_isActive = false;
 	std::vector<sf::Drawable*> drawables;
 
+	void CalculateTextPos();
+
 public:
 	Button() { }
 	Button(float sizeX, float sizeY, float posX, float posY, ButtonColor colors, std::string text, std::string fontpath, unsigned int fontsize);
 	virtual ~Button();
+
+	//Modifiers
+	void setPosition(float posX, float posY);
 
 	//accessors
 	bool isPressed();
@@ -47,7 +53,7 @@ class TextBox
 {
 public:
 	TextBox() { }
-	TextBox(int Textsize, sf::Color color, bool seleted);
+	TextBox(float posX, float posY, float boxSizeX, float boxSizeY, uint32_t fontsize, sf::Color textcolor, sf::Color boxColor, float outlineThicknes, sf::Color outlineColor, bool selected);
 
 	void SetFont(sf::Font& font);
 	void SetPosition(sf::Vector2f pos);
@@ -58,6 +64,10 @@ public:
 	bool IsSelected();
 	void drawText(sf::RenderTarget& target);
 	void TypedOn(sf::Event input);
+	void BoxClicked(sf::Event input, sf::RenderWindow& window);
+
+	//accessors
+	const sf::FloatRect getGB() const;
 
 private:
 	sf::RectangleShape box;
@@ -69,4 +79,10 @@ private:
 
 	void InputLogic(int charTyped);
 	void DeleteLastChar();
+	void SetTextAndBoxPosition(float boxPosiitonX, float boxpositionY);
 };
+
+enum buttonposition { TB_LEFT, TB_RIGHT };
+using TBButtonPosion = buttonposition;
+
+void SetTextBox_ButtonPos(TextBox& textbox, Button& button, TBButtonPosion positon);
