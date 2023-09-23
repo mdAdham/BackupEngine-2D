@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "MemoryManagement.h"
 #include "gui.h"
 #include "Random.h"
@@ -7,6 +8,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include "UserAccount.h"
+#include <SFML/OpenGL.hpp>
 
 MemoryManagement memory;
 
@@ -39,13 +41,17 @@ int main()
 {
 	Application app("BackupEngine", "BackupEngine_Data", sf::Vector2u(800, 600));
 	app.Run();
-
+	
 	std::cout << SendMessageB() << std::endl;
 
 	sf::ContextSettings setting;
 	setting.majorVersion = 3;
 	setting.minorVersion = 3;
 	setting.antialiasingLevel = 1;
+
+	Server server("UserAccount Server", "1234567890!@#$%^&*()");
+	server.AddUser("BackupCookie686", USER::UT_ADMIN);
+	server.AddUser("J4CN", USER::UT_ADMIN);
 
 	sf::RenderWindow window(sf::VideoMode(850, 650, 32u), "BackupEngine", sf::Style::Resize, setting);
 	window.setFramerateLimit(120);
@@ -127,9 +133,9 @@ int main()
 			}
 		}
 
-		
 
-		window.clear();
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		//window.clear();
 		sf::Vector2i mouseposwindow = sf::Mouse::getPosition(window);
 		button.Update(mouseposwindow);
 		sendButton.Update(mouseposwindow);
@@ -139,6 +145,7 @@ int main()
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) || sendButton.isPressed())
 			textBox1.SetSelected(false);
 
+		
 		if (textBox1.getText() == "/exit" && !textBox1.IsSelected())
 			window.close();
 		
