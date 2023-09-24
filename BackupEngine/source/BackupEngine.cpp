@@ -9,6 +9,7 @@
 #include <SFML/System.hpp>
 #include "UserAccount.h"
 #include <SFML/OpenGL.hpp>
+#include "glad/glad.h"
 
 MemoryManagement memory;
 
