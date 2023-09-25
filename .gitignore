@@ -25,23 +25,25 @@
 *.la
 *.a
 #*.lib
-*.pdb
-*.exp
+**.pdb
+**.exp
 
 # Executables
-*.exe
-*.out
-*.app
+**.exe
+**.out
+**.app
 
 #files
 .vs
-bin-int
+**bin/**
+**bin-int/**
 x64
-*.vcxproj.filters
-*.vcxproj.user
-*.vcxitems
-*.aps
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+**.vcxitems
+**.aps
 /LowLevelStuff/Source.cpp
-*.lnk
+**.lnk
 
 FS.exe

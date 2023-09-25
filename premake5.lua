@@ -1,6 +1,6 @@
 workspace "BackupEngine(2D)"
-	architecture "x64"
-	startproject "BackupEngine(2D)"
+	architecture "x86_64"
+	startproject "BackupEngine"
 	configurations
 	{
 		"Debug",
@@ -38,7 +38,7 @@ project "BackupEngine"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++20"
-	staticruntime "on"
+	staticruntime "off"
 
 	targetdir ("bin/"..outputdir.."/%{prj.name}")
 	objdir ("bin-int/"..outputdir.."/%{prj.name}")
@@ -105,19 +105,16 @@ project "BackupEngine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
-		staticruntime "on"
 		systemversion "latest"
 
 		defines
 		{
-			"EN_PLATFORM_WINDOWS",
-			"EN_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
+			"EN_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
 		defines "EN_DEBUG"
+		runtime "Debug"
 		buildoptions "/MDd"
 		symbols "on"
 		links
@@ -131,19 +128,21 @@ project "BackupEngine"
 
 	filter "configurations:Release"
 		defines "EN_RELEASE"
+		runtime "Release"
 		buildoptions "/MD"
 		optimize "on"
 		links
 		{
-			"sfml-window-s-d.lib",
-			"sfml-graphics-s-d.lib",
-			"sfml-system-s-d.lib",
-			"sfml-audio-s-d.lib",
-			"sfml-network-s-d.lib"
+			"sfml-window-s.lib",
+			"sfml-graphics-s.lib",
+			"sfml-system-s.lib",
+			"sfml-audio-s.lib",
+			"sfml-network-s.lib"
 		}
 		
 	filter "configurations:Dist"
 		defines "EN_DIST"
+		runtime "Release"
 		buildoptions "/MD"
 		optimize "on"
 		links
@@ -160,6 +159,7 @@ project "CoreStuff"
 	kind "SharedLib"
 	language "C++"
 	cppdialect "C++20"
+	staticruntime "off"
 
 	defines
 	{
@@ -230,8 +230,6 @@ project "CoreStuff"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
-		staticruntime "on"
 		systemversion "latest"
 
 		defines
@@ -242,6 +240,7 @@ project "CoreStuff"
 
 	filter "configurations:Debug"
 		defines "EN_DEBUG"
+		runtime "Debug"
 		buildoptions "/MDd"
 		symbols "on"
 		links
@@ -255,19 +254,21 @@ project "CoreStuff"
 
 	filter "configurations:Release"
 		defines "EN_RELEASE"
+		runtime "Release"
 		buildoptions "/MD"
 		optimize "on"
 		links
 		{
-			"sfml-window-s-d.lib",
-			"sfml-graphics-s-d.lib",
-			"sfml-system-s-d.lib",
-			"sfml-audio-s-d.lib",
-			"sfml-network-s-d.lib"
+			"sfml-window-s.lib",
+			"sfml-graphics-s.lib",
+			"sfml-system-s.lib",
+			"sfml-audio-s.lib",
+			"sfml-network-s.lib"
 		}
 		
 	filter "configurations:Dist"
 		defines "EN_DIST"
+		runtime "Release"
 		buildoptions "/MD"
 		optimize "on"
 		links
@@ -358,7 +359,7 @@ project "MathLib"
 		optimize "on"
 		links
 		{
-			"sfml-system-s-d.lib"
+			"sfml-system-s.lib"
 		}
 		
 	filter "configurations:Dist"

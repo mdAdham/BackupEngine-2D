@@ -3,9 +3,10 @@
 #include <SFML/Graphics.hpp>
 #include "BFileSystem.h"
 #include "InputManager.h"
-#include "State.h"
+#include "StateStack.h"
 #include <stack>
 #include <iostream>
+#include "Timestep.h"
 
 struct GameData
 {
@@ -29,12 +30,12 @@ public:
 		this->m_background_studio_tex.setRepeated(true);
 	}
 
-	void Update(float dt) override
+	void Update(Timestep ts) override
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
 			this->data->window->close();
 
-		std::cout << dt << std::endl;
+		std::cout << ts << std::endl;
 	}
 
 	void Render() override
@@ -64,9 +65,10 @@ public:
 private:
 	GameData _data;
 	DefaultState* state = nullptr;
-	std::stack<State*> states;
-	bool running = false;
+	Ref<StateStack> states;
 	sf::Clock _dtClock;
-	float _dt = 0.f;
+	Timestep ts;
 	sf::Image appIcon{};
+	float m_LastFrameTime = 0.0f;
+	bool running = false;
 };

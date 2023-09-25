@@ -9,7 +9,6 @@
 #include <SFML/System.hpp>
 #include "UserAccount.h"
 #include <SFML/OpenGL.hpp>
-#include "glad/glad.h"
 
 MemoryManagement memory;
 
@@ -62,8 +61,8 @@ int main()
 	sf::Event sfEvent{};
 	sf::Texture CloseTexture, ReSizeTexture;
 	sf::Clock clock;
-	ButtonColor btnColor, sndButtonColor;
 
+	ButtonColor btnColor, sndButtonColor;
 	sndButtonColor.idle = sf::Color(0, 0, 0, 50);
 	sndButtonColor.hover = sf::Color(20, 20, 20, 100);
 	sndButtonColor.active = sf::Color(50, 50, 50, 150);

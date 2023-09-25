@@ -14,6 +14,7 @@ Application::~Application()
 {
 	delete this->_data.datafolder;
 	delete this->_data.Window;
+	delete this->state;
 }
 
 void Application::Run()
@@ -22,8 +23,8 @@ void Application::Run()
 	sd.window = this->_data.Window;
 	sd.states = this->states;
 	state = new DefaultState(&sd, this->_data);
+	this->states = CreateRef<StateStack>(StateID::DEFAULT_STATE, state);
 
-	this->states.push(state);
 	while (running)
 	{
 		while (this->_data.Window->isOpen())
@@ -40,7 +41,9 @@ void Application::Run()
 
 void Application::UpdateDt()
 {
-	this->_dt = this->_dtClock.restart().asSeconds();
+	float time = this->_dtClock.getElapsedTime().asSeconds();
+	this->ts = time - m_LastFrameTime;
+	m_LastFrameTime = time;
 }
 
 void Application::UpdateSFMLEvents()
@@ -54,14 +57,18 @@ void Application::UpdateSFMLEvents()
 
 void Application::Update()
 {
-	this->states.top()->Update(_dt);
+#if 0
+	this->states->Update(this->_dt)
+#else
+	this->states->Update(ts);
+#endif // 0
 }
 
 void Application::Render()
 {
 	this->_data.Window->clear();
 
-	this->states.top()->Render();
+	this->states->Render();
 
 	this->_data.Window->display();
 }
