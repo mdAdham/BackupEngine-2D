@@ -29,7 +29,7 @@
 **.exp
 
 # Executables
-**.exe
+#**.exe
 **.out
 **.app
 
@@ -45,5 +45,5 @@ x64
 **.aps
 /LowLevelStuff/Source.cpp
 **.lnk
-
+.sln
 FS.exe

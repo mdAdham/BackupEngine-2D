@@ -23,19 +23,19 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
@@ -54,56 +54,53 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\bin\Debug-windows-x86_64\BackupEngine\</OutDir>
     <IntDir>..\bin-int\Debug-windows-x86_64\BackupEngine\</IntDir>
     <TargetName>BackupEngine</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\bin\Release-windows-x86_64\BackupEngine\</OutDir>
     <IntDir>..\bin-int\Release-windows-x86_64\BackupEngine\</IntDir>
     <TargetName>BackupEngine</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\bin\Dist-windows-x86_64\BackupEngine\</OutDir>
     <IntDir>..\bin-int\Dist-windows-x86_64\BackupEngine\</IntDir>
     <TargetName>BackupEngine</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>bcpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SFML_STATIC;EN_PLATFORM_WINDOWS;EN_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\Depend\spdlog\include;..\Depend\Glad\include;..\Depend\Imgui;..\Depend\SFML\include;..\Depend\Imgui-sfml;..\Depend\glm;..\CoreStuff\source;..\MathLib\math;..\LowLevelStuff\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_STATIC;_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;EN_PLATFORM_WINDOWS;EN_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>source;..\Depend\GLFW\include;..\Depend\spdlog\include;..\Depend\Box2D\include;..\Depend\Glad\include;..\Depend\Imgui;..\Depend\SFML\include;..\Depend\Imgui-sfml;..\Depend\glm;..\Depend\entt\include;..\Depend\yaml-cpp\include;..\Depend\stb_image;..\Depend\ImGuizmo;..\CoreStuff\source;..\MathLib\math;..\LowLevelStuff\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
-    <ResourceCompile>
-      <PreprocessorDefinitions>SFML_STATIC;EN_PLATFORM_WINDOWS;EN_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\Depend\spdlog\include;..\Depend\Glad\include;..\Depend\Imgui;..\Depend\SFML\include;..\Depend\Imgui-sfml;..\Depend\glm;..\CoreStuff\source;..\MathLib\math;..\LowLevelStuff\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ResourceCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;openal32.lib;winmm.lib;gdi32.lib;flac.lib;vorbisenc.lib;vorbis.lib;vorbisfile.lib;ogg.lib;freetype.lib;sfml-main.lib;user32.lib;shell32.lib;kernel32.lib;sfml-window-s-d.lib;sfml-graphics-s-d.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;sfml-network-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\Depend\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;sfml-window-s-d.lib;sfml-graphics-s-d.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;sfml-network-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Depend\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>bcpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SFML_STATIC;EN_PLATFORM_WINDOWS;EN_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\Depend\spdlog\include;..\Depend\Glad\include;..\Depend\Imgui;..\Depend\SFML\include;..\Depend\Imgui-sfml;..\Depend\glm;..\CoreStuff\source;..\MathLib\math;..\LowLevelStuff\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_STATIC;_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;EN_PLATFORM_WINDOWS;EN_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>source;..\Depend\GLFW\include;..\Depend\spdlog\include;..\Depend\Box2D\include;..\Depend\Glad\include;..\Depend\Imgui;..\Depend\SFML\include;..\Depend\Imgui-sfml;..\Depend\glm;..\Depend\entt\include;..\Depend\yaml-cpp\include;..\Depend\stb_image;..\Depend\ImGuizmo;..\CoreStuff\source;..\MathLib\math;..\LowLevelStuff\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -111,27 +108,27 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
-    <ResourceCompile>
-      <PreprocessorDefinitions>SFML_STATIC;EN_PLATFORM_WINDOWS;EN_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\Depend\spdlog\include;..\Depend\Glad\include;..\Depend\Imgui;..\Depend\SFML\include;..\Depend\Imgui-sfml;..\Depend\glm;..\CoreStuff\source;..\MathLib\math;..\LowLevelStuff\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ResourceCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;openal32.lib;winmm.lib;gdi32.lib;flac.lib;vorbisenc.lib;vorbis.lib;vorbisfile.lib;ogg.lib;freetype.lib;sfml-main.lib;user32.lib;shell32.lib;kernel32.lib;sfml-window-s.lib;sfml-graphics-s.lib;sfml-system-s.lib;sfml-audio-s.lib;sfml-network-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\Depend\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;sfml-window-s.lib;sfml-graphics-s.lib;sfml-system-s.lib;sfml-audio-s.lib;sfml-network-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Depend\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>bcpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SFML_STATIC;EN_PLATFORM_WINDOWS;EN_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\Depend\spdlog\include;..\Depend\Glad\include;..\Depend\Imgui;..\Depend\SFML\include;..\Depend\Imgui-sfml;..\Depend\glm;..\CoreStuff\source;..\MathLib\math;..\LowLevelStuff\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_STATIC;_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;EN_PLATFORM_WINDOWS;EN_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>source;..\Depend\GLFW\include;..\Depend\spdlog\include;..\Depend\Box2D\include;..\Depend\Glad\include;..\Depend\Imgui;..\Depend\SFML\include;..\Depend\Imgui-sfml;..\Depend\glm;..\Depend\entt\include;..\Depend\yaml-cpp\include;..\Depend\stb_image;..\Depend\ImGuizmo;..\CoreStuff\source;..\MathLib\math;..\LowLevelStuff\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>None</DebugInformationFormat>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -139,53 +136,161 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
-    <ResourceCompile>
-      <PreprocessorDefinitions>SFML_STATIC;EN_PLATFORM_WINDOWS;EN_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\Depend\spdlog\include;..\Depend\Glad\include;..\Depend\Imgui;..\Depend\SFML\include;..\Depend\Imgui-sfml;..\Depend\glm;..\CoreStuff\source;..\MathLib\math;..\LowLevelStuff\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ResourceCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;openal32.lib;winmm.lib;gdi32.lib;flac.lib;vorbisenc.lib;vorbis.lib;vorbisfile.lib;ogg.lib;freetype.lib;sfml-main.lib;user32.lib;shell32.lib;kernel32.lib;sfml-window-s.lib;sfml-graphics-s.lib;sfml-system-s.lib;sfml-audio-s.lib;sfml-network-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\Depend\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;sfml-window-s.lib;sfml-graphics-s.lib;sfml-system-s.lib;sfml-audio-s.lib;sfml-network-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Depend\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="source\Application.h" />
+    <ClInclude Include="..\Depend\ImGuizmo\ImGuizmo.h" />
+    <ClInclude Include="..\Depend\Imgui-sfml\imconfig-SFML.h" />
+    <ClInclude Include="..\Depend\Imgui-sfml\imgui-SFML.h" />
+    <ClInclude Include="..\Depend\Imgui-sfml\imgui-SFML_export.h" />
     <ClInclude Include="source\BackupEngine.h" />
-    <ClInclude Include="source\Entity.h" />
-    <ClInclude Include="source\StateStack.h" />
-    <ClInclude Include="source\TitleBar.h" />
-    <ClInclude Include="source\resource.h" />
+    <ClInclude Include="source\BackupEngine\Core\Application.h" />
+    <ClInclude Include="source\BackupEngine\Core\Assert.h" />
+    <ClInclude Include="source\BackupEngine\Core\BFileSystem.h" />
+    <ClInclude Include="source\BackupEngine\Core\Base.h" />
+    <ClInclude Include="source\BackupEngine\Core\EntryPoint.h" />
+    <ClInclude Include="source\BackupEngine\Core\Input.h" />
+    <ClInclude Include="source\BackupEngine\Core\KeyCodes.h" />
+    <ClInclude Include="source\BackupEngine\Core\Layer.h" />
+    <ClInclude Include="source\BackupEngine\Core\LayerStack.h" />
+    <ClInclude Include="source\BackupEngine\Core\Log.h" />
+    <ClInclude Include="source\BackupEngine\Core\MemoryManagement.h" />
+    <ClInclude Include="source\BackupEngine\Core\MouseCodes.h" />
+    <ClInclude Include="source\BackupEngine\Core\Random.h" />
+    <ClInclude Include="source\BackupEngine\Core\State.h" />
+    <ClInclude Include="source\BackupEngine\Core\StateStack.h" />
+    <ClInclude Include="source\BackupEngine\Core\TImer.h" />
+    <ClInclude Include="source\BackupEngine\Core\Timestep.h" />
+    <ClInclude Include="source\BackupEngine\Core\UUID.h" />
+    <ClInclude Include="source\BackupEngine\Core\Window.h" />
+    <ClInclude Include="source\BackupEngine\Events\ApplicationEvent.h" />
+    <ClInclude Include="source\BackupEngine\Events\Event.h" />
+    <ClInclude Include="source\BackupEngine\Events\KeyEvent.h" />
+    <ClInclude Include="source\BackupEngine\Events\MouseEvent.h" />
+    <ClInclude Include="source\BackupEngine\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="source\BackupEngine\Math\Math.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\Buffer.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\Camera.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\EditorCamera.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\Framebuffer.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\OrthographicCameraController.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\PerspectiveCamera.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\PerspectiveCameraController.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\RenderCommand.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\Renderer.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\Renderer2D.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\Renderer3D.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\RendererAPI.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\Shader.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\Texture.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\UniformBuffer.h" />
+    <ClInclude Include="source\BackupEngine\Renderer\VertexArray.h" />
+    <ClInclude Include="source\BackupEngine\Scene\Components.h" />
+    <ClInclude Include="source\BackupEngine\Scene\Entity.h" />
+    <ClInclude Include="source\BackupEngine\Scene\Scene.h" />
+    <ClInclude Include="source\BackupEngine\Scene\SceneCamera.h" />
+    <ClInclude Include="source\BackupEngine\Scene\SceneSerializer.h" />
+    <ClInclude Include="source\BackupEngine\Scene\ScriptableEntity.h" />
+    <ClInclude Include="source\BackupEngine\TitleBar.h" />
+    <ClInclude Include="source\BackupEngine\Utils\PlatformUtils.h" />
+    <ClInclude Include="source\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="source\Platform\OpenGL\OpenGLFramebuffer.h" />
+    <ClInclude Include="source\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="source\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="source\Platform\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="source\Platform\OpenGL\OpenGLUniformBuffer.h" />
+    <ClInclude Include="source\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="source\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="source\bcpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Application.cpp" />
-    <ClCompile Include="source\BackupEngine.cpp" />
-    <ClCompile Include="source\StateStack.cpp" />
-    <ClCompile Include="source\TitleBar.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="source\BackupEngine.rc" />
+    <ClCompile Include="..\Depend\ImGuizmo\ImGuizmo.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\Depend\Imgui-sfml\imgui-SFML.cpp" />
+    <ClCompile Include="source\BackupEngine\BackupEngine.cpp" />
+    <ClCompile Include="source\BackupEngine\Core\Application.cpp" />
+    <ClCompile Include="source\BackupEngine\Core\BFileSystem.cpp" />
+    <ClCompile Include="source\BackupEngine\Core\Layer.cpp" />
+    <ClCompile Include="source\BackupEngine\Core\LayerStack.cpp" />
+    <ClCompile Include="source\BackupEngine\Core\Log.cpp" />
+    <ClCompile Include="source\BackupEngine\Core\Random.cpp" />
+    <ClCompile Include="source\BackupEngine\Core\StateStack.cpp" />
+    <ClCompile Include="source\BackupEngine\Core\UUID.cpp" />
+    <ClCompile Include="source\BackupEngine\Core\Window.cpp" />
+    <ClCompile Include="source\BackupEngine\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="source\BackupEngine\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="source\BackupEngine\Math\Math.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\Buffer.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\EditorCamera.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\Framebuffer.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\OrthographicCameraController.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\PerspectiveCamera.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\PerspectiveCameraController.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\Renderer.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\Renderer3D.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\Shader.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\Texture.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\UniformBuffer.cpp" />
+    <ClCompile Include="source\BackupEngine\Renderer\VertexArray.cpp" />
+    <ClCompile Include="source\BackupEngine\Scene\Entity.cpp" />
+    <ClCompile Include="source\BackupEngine\Scene\Scene.cpp" />
+    <ClCompile Include="source\BackupEngine\Scene\SceneCamera.cpp" />
+    <ClCompile Include="source\BackupEngine\Scene\SceneSerializer.cpp" />
+    <ClCompile Include="source\BackupEngine\TitleBar.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLFramebuffer.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLTexture.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLUniformBuffer.cpp" />
+    <ClCompile Include="source\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="source\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="source\Platform\Windows\WindowsPlatformaUtils.cpp" />
+    <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="source\bcpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ImportGroup Label="Shared">
     <Import Project="..\LowLevelStuff\LowLevelStuff.vcxitems" Label="Shared" />
   </ImportGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Depend\GLFW\GLFW.vcxproj">
+      <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Depend\Glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Depend\Imgui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\CoreStuff\CoreStuff.vcxproj">
-      <Project>{F60D6118-6278-158F-ABB6-C6341760F3E3}</Project>
+    <ProjectReference Include="..\Depend\Box2D\Box2D.vcxproj">
+      <Project>{A434E80C-1049-10BE-D9CA-B31D459E0CEF}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\MathLib\MathLib.vcxproj">
-      <Project>{86BBB515-F29A-34B1-FBB2-BF8767119B12}</Project>
+    <ProjectReference Include="..\Depend\yaml-cpp\yaml-cpp.vcxproj">
+      <Project>{88F1A057-74BE-FB62-9DD7-E90A890331F1}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

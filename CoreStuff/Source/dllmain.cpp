@@ -2,8 +2,6 @@
 #include "pch.h"
 #include <iostream>
 #include "CoreStuff.h"
-#include "Random.h"
-#include "BFileSystem.h"
 
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,

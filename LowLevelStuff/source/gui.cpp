@@ -1,3 +1,4 @@
+#include "bcpch.h"
 #include "gui.h"
 
 void Button::CalculateTextPos()
@@ -190,7 +191,7 @@ void TextBox::TypedOn(sf::Event input)
 
 void TextBox::BoxClicked(sf::Event input, sf::RenderWindow& window)
 {
-	if (this->box.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
+	if (this->box.getGlobalBounds().contains((float)sf::Mouse::getPosition(window).x, (float)sf::Mouse::getPosition(window).y))
 	{
 		this->SetSelected(true);
 	}

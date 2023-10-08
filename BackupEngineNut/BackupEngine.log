@@ -1,0 +1,77 @@
+[16:16:00] [info] BackupEngine: Creating Window BackupEngineNut (1600, 900)
+[16:16:16] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:16] [trace] BackupEngine: Deserialized entity with ID = 5194090425539187036, name = Back
+[16:16:16] [trace] BackupEngine: Deserialized entity with ID = 1825662697292153128, name = camera
+[16:16:16] [trace] BackupEngine: Deserialized entity with ID = 15071573795192343799, name = Front
+[16:16:16] [error] BackupEngine: API_ID_RECOMPILE_FRAGMENT_SHADER performance warning has been generated. Fragment shader recompiled due to state change.
+[16:16:18] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:18] [trace] BackupEngine: Deserialized entity with ID = 8244940659429586525, name = Left
+[16:16:18] [trace] BackupEngine: Deserialized entity with ID = 2335431429201735937, name = Right
+[16:16:18] [trace] BackupEngine: Deserialized entity with ID = 15355018394736438603, name = Camera
+[16:16:18] [trace] BackupEngine: Deserialized entity with ID = 9235617827118161440, name = Top
+[16:16:19] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:19] [trace] BackupEngine: Deserialized entity with ID = 16672940118998907085, name = Floor
+[16:16:19] [trace] BackupEngine: Deserialized entity with ID = 4793924497264767156, name = Camera
+[16:16:19] [trace] BackupEngine: Deserialized entity with ID = 15045535320033348975, name = Sprite
+[16:16:19] [trace] BackupEngine: Deserialized entity with ID = 5134011587522944740, name = Floor
+[16:16:19] [trace] BackupEngine: Deserialized entity with ID = 8804479042241551551, name = Circle
+[16:16:19] [error] BackupEngine: API_ID_RECOMPILE_FRAGMENT_SHADER performance warning has been generated. Fragment shader recompiled due to state change.
+[16:16:20] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:20] [trace] BackupEngine: Deserialized entity with ID = 3263328598497060330, name = Camera B
+[16:16:20] [trace] BackupEngine: Deserialized entity with ID = 3503638098362915787, name = Camera A
+[16:16:20] [trace] BackupEngine: Deserialized entity with ID = 17154294327283940743, name = Cherno Square
+[16:16:20] [trace] BackupEngine: Deserialized entity with ID = 6645248621277955267, name = CheckerboardBG
+[16:16:22] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:22] [trace] BackupEngine: Deserialized entity with ID = 9335076965011521498, name = Camera B
+[16:16:22] [trace] BackupEngine: Deserialized entity with ID = 3480369648141931921, name = Camera A
+[16:16:22] [trace] BackupEngine: Deserialized entity with ID = 4212786185008784347, name = Red Square
+[16:16:22] [trace] BackupEngine: Deserialized entity with ID = 6902904111259729925, name = Green Square
+[16:16:23] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:23] [trace] BackupEngine: Deserialized entity with ID = 3263328598497060330, name = Camera B
+[16:16:23] [trace] BackupEngine: Deserialized entity with ID = 3503638098362915787, name = Camera A
+[16:16:23] [trace] BackupEngine: Deserialized entity with ID = 17154294327283940743, name = Cherno Square
+[16:16:23] [trace] BackupEngine: Deserialized entity with ID = 6645248621277955267, name = CheckerboardBG
+[16:16:27] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:27] [trace] BackupEngine: Deserialized entity with ID = 9335076965011521498, name = Camera B
+[16:16:27] [trace] BackupEngine: Deserialized entity with ID = 3480369648141931921, name = Camera A
+[16:16:27] [trace] BackupEngine: Deserialized entity with ID = 4212786185008784347, name = Red Square
+[16:16:27] [trace] BackupEngine: Deserialized entity with ID = 6902904111259729925, name = Green Square
+[16:16:28] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:28] [trace] BackupEngine: Deserialized entity with ID = 3263328598497060330, name = Camera B
+[16:16:28] [trace] BackupEngine: Deserialized entity with ID = 3503638098362915787, name = Camera A
+[16:16:28] [trace] BackupEngine: Deserialized entity with ID = 17154294327283940743, name = Cherno Square
+[16:16:28] [trace] BackupEngine: Deserialized entity with ID = 6645248621277955267, name = CheckerboardBG
+[16:16:30] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:30] [trace] BackupEngine: Deserialized entity with ID = 16672940118998907085, name = Floor
+[16:16:30] [trace] BackupEngine: Deserialized entity with ID = 4793924497264767156, name = Camera
+[16:16:30] [trace] BackupEngine: Deserialized entity with ID = 15045535320033348975, name = Sprite
+[16:16:30] [trace] BackupEngine: Deserialized entity with ID = 5134011587522944740, name = Floor
+[16:16:30] [trace] BackupEngine: Deserialized entity with ID = 8804479042241551551, name = Circle
+[16:16:32] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:32] [trace] BackupEngine: Deserialized entity with ID = 8244940659429586525, name = Left
+[16:16:32] [trace] BackupEngine: Deserialized entity with ID = 2335431429201735937, name = Right
+[16:16:32] [trace] BackupEngine: Deserialized entity with ID = 15355018394736438603, name = Camera
+[16:16:32] [trace] BackupEngine: Deserialized entity with ID = 9235617827118161440, name = Top
+[16:16:33] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:33] [trace] BackupEngine: Deserialized entity with ID = 5194090425539187036, name = Back
+[16:16:33] [trace] BackupEngine: Deserialized entity with ID = 1825662697292153128, name = camera
+[16:16:33] [trace] BackupEngine: Deserialized entity with ID = 15071573795192343799, name = Front
+[16:16:34] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:16:34] [trace] BackupEngine: Deserialized entity with ID = 5194090425539187036, name = Back
+[16:16:34] [trace] BackupEngine: Deserialized entity with ID = 1825662697292153128, name = camera
+[16:16:34] [trace] BackupEngine: Deserialized entity with ID = 15071573795192343799, name = Front
+[16:16:44] [error] BackupEngine: API_ID_RECOMPILE_FRAGMENT_SHADER performance warning has been generated. Fragment shader recompiled due to state change.
+[16:17:54] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:17:54] [trace] BackupEngine: Deserialized entity with ID = 15071573795192343799, name = Front
+[16:17:54] [trace] BackupEngine: Deserialized entity with ID = 1825662697292153128, name = camera
+[16:17:54] [trace] BackupEngine: Deserialized entity with ID = 5194090425539187036, name = Back
+[16:17:55] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:17:55] [trace] BackupEngine: Deserialized entity with ID = 15071573795192343799, name = Front
+[16:17:56] [trace] BackupEngine: Deserialized entity with ID = 1825662697292153128, name = camera
+[16:17:56] [trace] BackupEngine: Deserialized entity with ID = 5194090425539187036, name = Back
+[16:19:11] [trace] BackupEngine: Deserializing scene 'Untitled'
+[16:19:11] [trace] BackupEngine: Deserialized entity with ID = 16672940118998907085, name = Floor
+[16:19:11] [trace] BackupEngine: Deserialized entity with ID = 4793924497264767156, name = Camera
+[16:19:11] [trace] BackupEngine: Deserialized entity with ID = 15045535320033348975, name = Sprite
+[16:19:11] [trace] BackupEngine: Deserialized entity with ID = 5134011587522944740, name = Floor
+[16:19:11] [trace] BackupEngine: Deserialized entity with ID = 8804479042241551551, name = Circle

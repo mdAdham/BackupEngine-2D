@@ -170,24 +170,12 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="source\BFileSystem.h" />
-    <ClInclude Include="source\Core.h" />
     <ClInclude Include="source\CoreStuff.h" />
-    <ClInclude Include="source\InputManager.h" />
-    <ClInclude Include="source\MemoryManagement.h" />
-    <ClInclude Include="source\Random.h" />
-    <ClInclude Include="source\State.h" />
-    <ClInclude Include="source\TImer.h" />
-    <ClInclude Include="source\Timestep.h" />
     <ClInclude Include="source\framework.h" />
     <ClInclude Include="source\pch.h" />
     <ClInclude Include="source\resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\BFileSystem.cpp" />
-    <ClCompile Include="source\CoreStuff.cpp" />
-    <ClCompile Include="source\InputManager.cpp" />
-    <ClCompile Include="source\Random.cpp" />
     <ClCompile Include="source\dllmain.cpp" />
     <ClCompile Include="source\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
