@@ -14,7 +14,7 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
+#*.dll
 
 # Fortran module files
 *.mod
@@ -24,20 +24,26 @@
 *.lai
 *.la
 *.a
-*.lib
-*.pdb
-*.exp
+#*.lib
+**.pdb
+**.exp
 
 # Executables
-*.exe
-*.out
-*.app
+#**.exe
+**.out
+**.app
 
 #files
 .vs
-bin-int
+**bin/**
+**bin-int/**
 x64
-*.vcxproj.filters
-*.vcxproj.user
-*.vcxitems
-*.aps
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+**.vcxitems
+**.aps
+/LowLevelStuff/Source.cpp
+**.lnk
+.sln
+FS.exe

@@ -8,7 +8,7 @@
 #define PCH1_H
 
 // add headers that you want to pre-compile here
-#include "framework.h"
+#include "math/framework.h"
 #include <iostream>
 
 #endif //PCH_H
